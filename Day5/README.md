@@ -1,11 +1,13 @@
-Today, you'll dive into mastering the AWK command and regular expressions to analyze real-world, complex log files. Logs are the backbone of system reliability, and analyzing them effectively is a core DevOps skill.
+Today, we'll dive into mastering the AWK command and regular expressions to analyze real-world, complex log files. Logs are the backbone of system reliability, and analyzing them effectively is a core DevOps skill.
 
-Challenge Overview
+Challenge Overview :
+
 You are tasked with processing a sample log file (user_activity.log) that records user activities on a web application. The log file contains inconsistencies, making it necessary to use AWK and regex to extract relevant information and generate a report.
 
 
 
-Tasks
+Tasks: 
+
 Extract Unique IP Addresses Write an awk command to extract all unique IP addresses, regardless of their position in the log.
 
 Extract Usernames Use AWK to extract usernames from the log. Ensure the script captures usernames appearing in different positions.
