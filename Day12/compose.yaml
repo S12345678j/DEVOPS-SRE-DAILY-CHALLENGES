@@ -1,0 +1,48 @@
+version: "3.8"
+services:
+  redis:
+    image: redis:4.0.2
+    container_name: redis-server
+    ports:
+      - 6379:6379
+    networks:
+      - yelb-network
+    volumes:
+      - redis-data:/var/lib/data
+
+  db:
+    image: mreferre/yelb-db:0.6
+    container_name: yelb-db
+    ports:
+      - 5432:5432
+    networks:
+      - yelb-network
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  server:
+    image: mreferre/yelb-appserver:0.7
+    container_name: yelb-server
+    networks:
+      - yelb-network
+    environment:
+      - RACK_ENV=test
+    ports:
+      - 4567:4567
+
+  yelb_ui:
+    image: mreferre/yelb-ui:0.10
+    container_name: yelb-ui
+    environment:
+      - UI_ENV=test
+    ports:
+      - 8082:80
+    networks:
+      - yelb-network
+
+networks:
+  yelb-network:
+    driver: bridge
+volumes:
+  redis-data:
+  db-data:
