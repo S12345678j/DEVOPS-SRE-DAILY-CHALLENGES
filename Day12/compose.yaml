@@ -23,6 +23,9 @@ services:
   server:
     image: mreferre/yelb-appserver:0.7
     container_name: yelb-server
+    depends_on:
+      - db
+      - redis
     networks:
       - yelb-network
     environment:
@@ -33,6 +36,8 @@ services:
   yelb_ui:
     image: mreferre/yelb-ui:0.10
     container_name: yelb-ui
+    depends_on:
+      - server
     environment:
       - UI_ENV=test
     ports:
